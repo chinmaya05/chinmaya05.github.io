@@ -1,0 +1,57 @@
+<section id="about" class="section">
+  <div class="container">
+    <div class="section-head" reveal>
+      <div class="eyebrow">About</div>
+      <h2>
+        Building dependable software for
+        <span class="grad-text">real-world operations</span>
+      </h2>
+    </div>
+
+    <div class="grid">
+      <div class="story">
+        @for (para of about.paragraphs; track $index) {
+          <p reveal [revealDelay]="$index * 100">{{ para }}</p>
+        }
+
+        <div class="domains">
+          @for (d of about.domains; track d.title; let i = $index) {
+            <div reveal [revealDelay]="150 + i * 90">
+              <article class="card domain" spotlight>
+                <h3>{{ d.title }}</h3>
+                <p>{{ d.text }}</p>
+              </article>
+            </div>
+          }
+        </div>
+      </div>
+
+      <aside class="side">
+        <div class="stats">
+          @for (s of about.stats; track s.label; let i = $index) {
+            <div reveal [revealDelay]="i * 90">
+              <div class="stat">
+                <strong class="grad-text">{{ s.value }}</strong>
+                <span>{{ s.label }}</span>
+              </div>
+            </div>
+          }
+        </div>
+
+        <div reveal [revealDelay]="200">
+          <article class="card info" spotlight>
+            <div class="row">
+              <app-icon name="pin" /><span>{{ p.location }}</span>
+            </div>
+            <a class="row" [href]="'mailto:' + p.email"
+              ><app-icon name="mail" /><span>{{ p.email }}</span></a
+            >
+            <a class="row" [href]="'tel:' + p.phone"
+              ><app-icon name="phone" /><span>{{ p.phone }}</span></a
+            >
+          </article>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>

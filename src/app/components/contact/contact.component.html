@@ -1,0 +1,97 @@
+<section id="contact" class="section">
+  <div class="container">
+    <div class="section-head" reveal>
+      <div class="eyebrow">Contact</div>
+      <h2>Let's build something <span class="grad-text">together</span></h2>
+      <p>
+        Have an opportunity or a project in mind? Send a message and I will get
+        back to you.
+      </p>
+    </div>
+
+    <div class="grid">
+      <div class="links">
+        <div reveal>
+          <a class="card link" spotlight [href]="'mailto:' + p.email">
+            <span class="ico"><app-icon name="mail" /></span>
+            <span
+              ><small>Email</small><b>{{ p.email }}</b></span
+            >
+          </a>
+        </div>
+        <div reveal [revealDelay]="90">
+          <a class="card link" spotlight [href]="'tel:' + p.phone">
+            <span class="ico"><app-icon name="phone" /></span>
+            <span
+              ><small>Phone</small><b>{{ p.phone }}</b></span
+            >
+          </a>
+        </div>
+        <div reveal [revealDelay]="180">
+          <a
+            class="card link"
+            spotlight
+            [href]="p.linkedin"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="ico"><app-icon name="linkedin" /></span>
+            <span><small>LinkedIn</small><b>Chinmaya Sahu</b></span>
+          </a>
+        </div>
+        <div reveal [revealDelay]="270">
+          <div class="card link" spotlight>
+            <span class="ico"><app-icon name="pin" /></span>
+            <span
+              ><small>Location</small><b>{{ p.location }}</b></span
+            >
+          </div>
+        </div>
+      </div>
+
+      <div reveal [revealDelay]="120">
+        <form class="card form" spotlight (ngSubmit)="send()" #f="ngForm">
+          <label>
+            <span>Your name</span>
+            <input
+              name="name"
+              [(ngModel)]="name"
+              required
+              placeholder="Jane Doe"
+              autocomplete="name"
+            />
+          </label>
+          <label>
+            <span>Your email</span>
+            <input
+              name="email"
+              type="email"
+              [(ngModel)]="email"
+              required
+              placeholder="jane@company.com"
+              autocomplete="email"
+            />
+          </label>
+          <label>
+            <span>Message</span>
+            <textarea
+              name="message"
+              rows="5"
+              [(ngModel)]="message"
+              required
+              placeholder="Tell me about the role or project..."
+            ></textarea>
+          </label>
+          <button
+            class="btn btn--primary"
+            type="submit"
+            [disabled]="!!f.invalid"
+          >
+            {{ sent() ? "Opening your mail app…" : "Send message" }}
+            <app-icon name="send" />
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

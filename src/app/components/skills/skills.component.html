@@ -1,0 +1,36 @@
+<section id="skills" class="section">
+  <div class="container">
+    <div class="section-head" reveal>
+      <div class="eyebrow">Skills</div>
+      <h2>Technical <span class="grad-text">toolbox</span></h2>
+    </div>
+  </div>
+
+  <div class="marquee" reveal aria-hidden="true">
+    <div class="track">
+      @for (m of loop; track $index) {
+        <span class="tag">{{ m }}</span>
+      }
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="grid">
+      @for (g of groups; track g.title; let i = $index) {
+        <div reveal [revealDelay]="(i % 3) * 100">
+          <article class="card group" spotlight>
+            <div class="head">
+              <span class="ico">{{ g.icon }}</span>
+              <h3>{{ g.title }}</h3>
+            </div>
+            <div class="chips">
+              @for (s of g.items; track s) {
+                <span class="chip">{{ s }}</span>
+              }
+            </div>
+          </article>
+        </div>
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,64 @@
+<section id="home" class="hero">
+  <div class="container hero__grid">
+    <div class="copy">
+      <div reveal>
+        <span class="badge"><i class="dot"></i>{{ p.badge }}</span>
+      </div>
+
+      <h1 class="name" reveal [revealDelay]="80">
+        <span>{{ p.first }}</span> <span class="grad-text">{{ p.last }}</span>
+      </h1>
+
+      <!-- The line you marked: types out each role, deletes it, then types the next. -->
+      <h2 class="role" reveal [revealDelay]="160" aria-live="polite">
+        <span class="role__text">{{ typed() }}</span><span class="caret"></span>
+      </h2>
+
+      <p class="intro" reveal [revealDelay]="240">{{ p.intro }}</p>
+
+      <div class="cta" reveal [revealDelay]="320">
+        <a class="btn btn--primary" href="#projects" (click)="go($event, 'projects')">
+          Explore Projects <app-icon name="arrow-right" />
+        </a>
+        <a class="btn btn--ghost" href="#contact" (click)="go($event, 'contact')">Get in Touch</a>
+        <a class="btn btn--text" [href]="p.resume" download>
+          <app-icon name="download" /> Resume
+        </a>
+      </div>
+
+      <div class="socials" reveal [revealDelay]="400">
+        @if (p.github) {
+          <a [href]="p.github" target="_blank" rel="noopener" aria-label="GitHub"><app-icon name="github" /></a>
+        }
+        <a [href]="p.linkedin" target="_blank" rel="noopener" aria-label="LinkedIn"><app-icon name="linkedin" /></a>
+        <a [href]="'mailto:' + p.email" aria-label="Email"><app-icon name="mail" /></a>
+        <a [href]="'tel:' + p.phone" aria-label="Phone"><app-icon name="phone" /></a>
+      </div>
+    </div>
+
+    <div class="visual" reveal [revealDelay]="200">
+      <div class="photo" tilt>
+        <span class="photo__glow"></span>
+        <span class="photo__ring"></span>
+        <div class="photo__frame">
+          @if (!failed()) {
+            <img [src]="p.photo" alt="Chinmaya Sahu" (error)="onImageError()" (load)="onImageLoad()" />
+          } @else {
+            <div class="fallback">
+              <span>CS</span>
+              <small>Add your photo at<br /><code>public/images/profile.jpg</code></small>
+            </div>
+          }
+        </div>
+        <span class="float f1">Java</span>
+        <span class="float f2">Spring Boot</span>
+        <span class="float f3">Angular</span>
+        <span class="float f4">Kafka</span>
+      </div>
+    </div>
+  </div>
+
+  <a class="hint" href="#about" (click)="go($event, 'about')" aria-label="Scroll to About">
+    <span>Scroll</span><app-icon name="arrow-down" />
+  </a>
+</section>

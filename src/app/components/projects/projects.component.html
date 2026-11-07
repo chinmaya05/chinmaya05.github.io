@@ -1,0 +1,40 @@
+<section id="projects" class="section">
+  <div class="container">
+    <div class="section-head" reveal>
+      <div class="eyebrow">Projects</div>
+      <h2>Platforms I have <span class="grad-text">built and shipped</span></h2>
+      <p>
+        Enterprise systems in citizen engagement, smart city operations and
+        disaster management.
+      </p>
+    </div>
+
+    <div class="list">
+      @for (pr of projects; track pr.title; let i = $index) {
+        <div reveal [revealDelay]="60">
+          <article class="card proj" spotlight>
+            <div class="left">
+              <span class="no">{{ pr.no }}</span>
+              <span class="domain">{{ pr.domain }}</span>
+              <h3>{{ pr.title }}</h3>
+              <p class="sub">{{ pr.subtitle }}</p>
+              <div class="chips">
+                @for (t of pr.tech; track t) {
+                  <span class="chip">{{ t }}</span>
+                }
+              </div>
+            </div>
+
+            <ul class="points">
+              @for (pt of pr.points; track pt) {
+                <li>
+                  <app-icon name="arrow-right" /><span>{{ pt }}</span>
+                </li>
+              }
+            </ul>
+          </article>
+        </div>
+      }
+    </div>
+  </div>
+</section>

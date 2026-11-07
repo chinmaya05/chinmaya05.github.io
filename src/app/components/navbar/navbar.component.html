@@ -1,0 +1,36 @@
+<header class="nav" [class.scrolled]="scroll.scrolled()" [class.open]="open()">
+  <div class="nav__inner container">
+    <a class="logo" href="#home" (click)="go($event, 'home')" aria-label="Go to top">
+      <span class="logo__mark">CS</span>
+      <span class="logo__text">Chinmaya<b>.</b></span>
+    </a>
+
+    <nav class="links" aria-label="Primary">
+      @for (s of sections; track s.id) {
+        <a
+          class="link"
+          [href]="'#' + s.id"
+          [class.active]="scroll.active() === s.id"
+          [attr.aria-current]="scroll.active() === s.id ? 'true' : null"
+          (click)="go($event, s.id)"
+        >{{ s.label }}</a>
+      }
+    </nav>
+
+    <div class="right">
+      @if (profile.github) {
+        <a class="icon-btn" [href]="profile.github" target="_blank" rel="noopener" aria-label="GitHub">
+          <app-icon name="github" />
+        </a>
+      }
+      <a class="icon-btn" [href]="profile.linkedin" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <app-icon name="linkedin" />
+      </a>
+      <a class="btn btn--primary btn--sm hire" href="#contact" (click)="go($event, 'contact')">Hire me</a>
+      <button class="burger" type="button" (click)="toggleMenu()" [attr.aria-expanded]="open()" aria-label="Toggle menu">
+        <app-icon [name]="open() ? 'close' : 'menu'" />
+      </button>
+    </div>
+  </div>
+  <div class="progress" [style.transform]="'scaleX(' + scroll.progress() + ')'"></div>
+</header>

@@ -1,0 +1,49 @@
+:host { display: block; position: relative; }
+
+.bg { position: fixed; inset: 0; z-index: -1; overflow: hidden; background: var(--bg); }
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(110px);
+  opacity: 0.5;
+  animation: drift 22s ease-in-out infinite alternate;
+}
+.b1 { width: 520px; height: 520px; top: -140px; left: -120px; background: var(--blob-1); }
+.b2 { width: 460px; height: 460px; top: 30%; right: -160px; background: var(--blob-2); animation-delay: -7s; opacity: 0.32; }
+.b3 { width: 520px; height: 520px; bottom: -200px; left: 25%; background: var(--blob-3); animation-delay: -13s; opacity: 0.32; }
+@keyframes drift { to { transform: translate(70px, 50px) scale(1.15); } }
+
+.grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(var(--fg-rgb), 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--fg-rgb), 0.035) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse at 50% 30%, #000 20%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at 50% 30%, #000 20%, transparent 75%);
+}
+
+.to-top {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: rgba(var(--bg-2-rgb), 0.85);
+  backdrop-filter: blur(10px);
+  color: var(--text);
+  font-size: 1.2rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px);
+  transition: opacity 0.4s, transform 0.4s var(--ease), visibility 0.4s, background 0.3s, border-color 0.3s;
+  &.show { opacity: 1; visibility: visible; transform: none; }
+  &:hover { background: var(--accent); border-color: var(--accent); transform: translateY(-5px); box-shadow: 0 14px 30px -10px rgba(var(--accent-rgb), 0.9); }
+}
