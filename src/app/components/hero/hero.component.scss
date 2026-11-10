@@ -1,6 +1,7 @@
 :host { display: block; }
 
 .hero {
+  overflow-x: clip;
   position: relative;
   min-height: 100vh;
   display: flex;
